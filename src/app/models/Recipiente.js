@@ -1,0 +1,22 @@
+import Sequelize, { Model } from 'sequelize';
+
+class Recipiente extends Model {
+  static init(sequelize) {
+    super.init(
+      {
+        nome: Sequelize.STRING,
+        rua: Sequelize.STRING,
+        numero: Sequelize.INTEGER,
+        complemento: Sequelize.STRING,
+        estado: Sequelize.STRING,
+        cidade: Sequelize.STRING,
+        cep: Sequelize.INTEGER,
+      },
+      {
+        sequelize,
+      }
+    );
+  }
+}
+
+export default Recipiente;
