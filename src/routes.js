@@ -11,6 +11,8 @@ import SessionController from './app/controllers/SessionController';
 
 import RecipientController from './app/controllers/RecipienteController';
 
+import DeliveryManController from './app/controllers/DeliveryManController';
+
 import FileController from './app/controllers/FileController';
 
 import authMiddleware from './app/middlewares/auth';
@@ -29,8 +31,17 @@ routes.post('/sessions', SessionController.store);
 routes.post('/recipient', authMiddleware, RecipientController.store);
 routes.put('/recipient/:id', authMiddleware, RecipientController.update);
 
+// DelivaryMan
+routes.post('/delivarymans', authMiddleware, DeliveryManController.store);
+routes.get('/delivarymans', authMiddleware, DeliveryManController.index);
+routes.put(
+  '/delivarymans/:id',
+  authMiddleware,
+  upload.single('file'),
+  DeliveryManController.update
+);
 // Middlewares
-
+routes.get('/files', FileController.index);
 routes.post(
   '/files',
   authMiddleware,
