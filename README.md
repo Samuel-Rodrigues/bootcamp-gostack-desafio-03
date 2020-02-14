@@ -18,7 +18,7 @@
 
 ## :rocket: Sobre o desafio
 
-Durante esse desafio foi aplicação FastFeet que demos início no desafio anterior implementando funcionalidades iniciais
+Durante esse desafio foi dado continuidade na aplicação FastFeet que demos início no desafio anterior implementando funcionalidades iniciais
 
 ### **Funcionalidades do administrador**
 
