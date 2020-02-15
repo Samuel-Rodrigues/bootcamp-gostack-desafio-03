@@ -3,6 +3,7 @@ import Delivery from '../models/Delivery';
 import Recipient from '../models/Recipiente';
 import DeliveryMan from '../models/Deliveryman';
 import File from '../models/File';
+import Mail from '../../lib/Mail';
 
 class DeliveryController {
   async index(req, res) {
@@ -68,6 +69,12 @@ class DeliveryController {
     }
 
     const delivery = await Delivery.create(req.body);
+
+    await Mail.sendMail({
+      to: `${existDeliveryMan.name} <${existDeliveryMan.email}`,
+      subject: `Nova encomenda esperando para ser retirada`,
+      text: `Olá, ${existDeliveryMan.name}. Está disponível para retirada uma encomenda: ${req.body.product}`,
+    });
 
     return res.status(200).json(delivery);
   }

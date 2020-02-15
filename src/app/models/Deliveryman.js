@@ -17,6 +17,7 @@ class Deliveryman extends Model {
 
   static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' }); // as: 'avatar' é o codenome do relacionameto
+    this.hasMany(models.Delivery, { as: 'deliverys' });
   }
 }
 

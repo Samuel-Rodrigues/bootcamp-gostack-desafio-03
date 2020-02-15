@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
+import Delivery from '../models/Delivery';
 
 class DeliveryManController {
   async index(req, res) {
@@ -100,6 +101,19 @@ class DeliveryManController {
     await existeDeliveryMan.destroy();
 
     return res.status(200).json();
+  }
+
+  async show(req, res) {
+    const deliverys = await Deliveryman.findByPk(req.params.id, {
+      include: [
+        {
+          model: Delivery,
+          as: 'deliverys',
+          where: { end_date: null, canceled_at: null },
+        },
+      ],
+    });
+    return res.status(200).json(deliverys);
   }
 }
 

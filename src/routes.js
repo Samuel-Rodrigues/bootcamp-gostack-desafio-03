@@ -14,6 +14,7 @@ import RecipientController from './app/controllers/RecipienteController';
 import DeliveryManController from './app/controllers/DeliveryManController';
 import DeliveryController from './app/controllers/DeliveryController';
 import DeliverySent from './app/controllers/DeliverySent';
+import DeliveryFinishedController from './app/controllers/DeliveryFinishedController';
 import FileController from './app/controllers/FileController';
 
 import authMiddleware from './app/middlewares/auth';
@@ -33,6 +34,7 @@ routes.get('/recipient', authMiddleware, RecipientController.index);
 
 // DelivaryMan
 routes.post('/delivarymans', authMiddleware, DeliveryManController.store);
+routes.get('/delivarymans/:id', authMiddleware, DeliveryManController.show);
 routes.get('/delivarymans', authMiddleware, DeliveryManController.index);
 routes.delete(
   '/delivarymans/:id',
@@ -61,7 +63,10 @@ routes.put('/deliverys/:id', authMiddleware, DeliveryController.update);
 routes.delete('/deliverys/:id', authMiddleware, DeliveryController.delete);
 
 // DeliverySent
-routes.post('/deliverySent/:id', authMiddleware, DeliverySent.store);
-routes.put('/deliverySent/:id/end', authMiddleware, DeliverySent.update);
+routes.put('/deliveryman/:id/deliverySent', DeliverySent.update);
 
+routes.put(
+  '/deliveryman/:id/deliveryfinished',
+  DeliveryFinishedController.store
+);
 export default routes;
