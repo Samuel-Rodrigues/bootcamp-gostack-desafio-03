@@ -12,6 +12,7 @@ import SessionController from './app/controllers/SessionController';
 import RecipientController from './app/controllers/RecipienteController';
 
 import DeliveryManController from './app/controllers/DeliveryManController';
+import DeliveredController from './app/controllers/Delivered';
 import DeliveryController from './app/controllers/DeliveryController';
 import DeliverySent from './app/controllers/DeliverySent';
 import DeliveryFinishedController from './app/controllers/DeliveryFinishedController';
@@ -47,6 +48,10 @@ routes.put(
   upload.single('file'),
   DeliveryManController.update
 );
+
+// Delivered
+routes.get('/deliverymans/:id/delivered', DeliveredController.index);
+
 // Middlewares
 routes.get('/files', FileController.index);
 routes.post(
@@ -67,6 +72,6 @@ routes.put('/deliveryman/:id/deliverySent', DeliverySent.update);
 
 routes.put(
   '/deliveryman/:id/deliveryfinished',
-  DeliveryFinishedController.store
+  DeliveryFinishedController.update
 );
 export default routes;

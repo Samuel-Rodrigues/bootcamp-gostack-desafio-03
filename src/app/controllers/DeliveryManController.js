@@ -113,7 +113,9 @@ class DeliveryManController {
         },
       ],
     });
-    return res.status(200).json(deliverys);
+    return res
+      .status(200)
+      .json({ msg: 'Essas são suas entregas em andamento: ', deliverys });
   }
 }
 

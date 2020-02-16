@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import Delivery from '../models/Delivery';
 
 class DeliveryFinishedController {
-  async store(req, res) {
+  async update(req, res) {
     const schema = Yup.object().shape({
       end_date: Yup.date().required(),
     });
