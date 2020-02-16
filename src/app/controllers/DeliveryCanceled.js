@@ -17,9 +17,7 @@ class DeliveryCanceled {
     const delivery = await Delivery.findByPk(req.params.id);
 
     if (!delivery) {
-      return res
-        .status(400)
-        .json({ error: 'Não existe ddelivery com esse id' });
+      return res.status(400).json({ error: 'Não existe delivery com esse id' });
     }
 
     const { name, canceled_at } = await delivery.update({
@@ -30,7 +28,7 @@ class DeliveryCanceled {
 
     const dateFormat = format(
       Date.now(),
-      "dd'-'MM'-'yyyy 'às' hh 'horas e 'mm 'minutos' "
+      "dd'-'MM'-'yyyy 'às' hh':'mm 'horas' "
     );
     await Mail.sendMail({
       to: `${deliveryMan.name} <${deliveryMan.email}`,

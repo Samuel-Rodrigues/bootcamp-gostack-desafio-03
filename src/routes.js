@@ -19,6 +19,7 @@ import DeliveryFinishedController from './app/controllers/DeliveryFinishedContro
 import FileController from './app/controllers/FileController';
 import DeliveryCanceled from './app/controllers/DeliveryCanceled';
 import DeliveryProblemsController from './app/controllers/DeliveryProblemsController';
+import DeliveryCeleledByProblems from './app/controllers/DeliveryCanceledByProblems';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -82,4 +83,9 @@ routes.put('/delivery/:id/canceled', DeliveryCanceled.update);
 
 // Delivery Problems
 routes.post('/delivery/problems', DeliveryProblemsController.store);
+
+routes.put(
+  '/delivery/:id/canceledbyproblems',
+  DeliveryCeleledByProblems.update
+);
 export default routes;
