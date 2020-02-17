@@ -88,4 +88,6 @@ routes.put(
   '/delivery/:id/canceledbyproblems',
   DeliveryCeleledByProblems.update
 );
+
+routes.get('/delivery/canceledbyproblems', DeliveryCeleledByProblems.index);
 export default routes;
